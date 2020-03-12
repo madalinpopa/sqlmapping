@@ -130,5 +130,11 @@ post_tag = Table(
 
 
 def map_many_to_many():
-    mapper(Post, post, properties={"tag": relationship(Tag, uselist=False, secondary=post_tag)})
-    mapper(Tag, tag)
+    tag_mappers = mapper(Tag, tag)
+    mapper(
+        Post,
+        post,
+        properties={
+            "tag": relationship(tag_mappers, uselist=False, secondary=post_tag)
+        },
+    )
