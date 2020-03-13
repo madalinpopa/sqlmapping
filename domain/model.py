@@ -1,6 +1,7 @@
 # coding: utf-8
 
 # model.py
+from typing import List
 
 
 class User:
@@ -8,7 +9,7 @@ class User:
         self.username = username
         self.password = password
 
-        self.addresses = []
+        self.addresses: List[User] = []
 
     def __str__(self):
         return f"User<{self.username}>"
@@ -18,8 +19,6 @@ class User:
 
     def __eq__(self, other: str):
         return self.username == other.username
-
-        
 
 
 class Mail:

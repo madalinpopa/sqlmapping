@@ -8,9 +8,7 @@ from sqlalchemy.orm import Session
 from typing import List
 
 
-
 class AbstracRepository(abc.ABC):
-
     @abc.abstractmethod
     def add(self, model: object):
         raise NotImplementedError
@@ -19,8 +17,8 @@ class AbstracRepository(abc.ABC):
     def get(self, id: int) -> object:
         raise NotImplementedError
 
-class UserRepository(abstractmethod):
 
+class UserRepository(AbstracRepository):
     def __init__(self, session: Session):
         self._session = session
 
@@ -33,8 +31,8 @@ class UserRepository(abstractmethod):
     def allUser(self) -> List[model.User]:
         return self._session.query(model.User).all()
 
-class FakeUserRepository(AbstracRepository):
 
+class FakeUserRepository(AbstracRepository):
     def __init__(self):
         self._session = list()
 
