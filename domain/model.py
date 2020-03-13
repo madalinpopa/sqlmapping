@@ -2,6 +2,7 @@
 
 # model.py
 from typing import List
+from typing import Any
 
 
 class User:
@@ -17,18 +18,20 @@ class User:
     def __repr__(self):
         return f"User<{self.username}>"
 
-    def __eq__(self, other: str):
-        return self.username == other.username
+    def __eq__(self, other: Any) -> bool:
+        if isinstance(other, User):
+            return self.username == other.username
+        return False
 
 
 class Mail:
-    def __init__(self, email: str):
+    def __init__(self, email: str, user_id: int =None):
         self.email = email
-        self.user_id
+        self.user_id = user_id
 
 
 class Customer:
-    def __init__(self, firstname: str, lastname: str, city_id=None, city=None):
+    def __init__(self, firstname: str, lastname: str, city_id: int =None, city: City=None):
         self.firstname = firstname
         self.lastname = lastname
         self.city_id = city_id
