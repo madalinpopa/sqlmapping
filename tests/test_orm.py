@@ -4,7 +4,7 @@ from domain.model import User, Mail
 
 
 
-def test_can_insert_new_line_use_table(session):
+def test_can_insert_new_line_user_table(session):
     session.execute(
         'INSERT INTO user (username, password) VALUES'
         '("User1", "Pass1")'
