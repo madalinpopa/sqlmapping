@@ -34,7 +34,7 @@ mail = Table(
 
 
 def map_one_to_many():
-    mapper(User, user, properties={"mails": relationship(Mail, backref="user")})
+    mapper(User, user, properties={"mails": relationship(Mail)})
     mapper(Mail, mail)
 
 
@@ -63,7 +63,7 @@ city = Table(
 def map_many_to_one():
     mapper(City, city)
     mapper(
-        Customer, customer, properties={"city": relationship(City, backref="customer")}
+        Customer, customer, properties={"city": relationship(City)}
     )
 
 
@@ -94,10 +94,10 @@ def map_one_to_one():
     mapper(
         Employee,
         employee,
-        properties={"pay": relationship(Pay, uselist=False, backref="pay")},
+        properties={"pay": relationship(Pay, uselist=False, back_populates="employee")},
     )
     mapper(
-        Pay, pay, properties={"employee": relationship(Employee, backref="employee")}
+        Pay, pay, properties={"employee": relationship(Employee, back_populates="pay")}
     )
 
 

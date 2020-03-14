@@ -10,7 +10,7 @@ class User:
         self.username = username
         self.password = password
 
-        self.addresses: List[User] = []
+        self.mails: List[User] = []
 
     def __str__(self):
         return f"User<{self.username}>"
